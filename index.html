@@ -10,10 +10,11 @@
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Helvetica,Arial,sans-serif}
 main{max-width:420px;margin:0 auto;padding:64px 24px}
 svg.plate{position:fixed;inset:0;margin:auto;width:min(100vw,900px);height:min(100vh,900px);z-index:0;pointer-events:none}main{position:relative;z-index:1}
+@media (max-width:600px){svg.plate g{display:none}}
 .star{position:fixed;z-index:0;pointer-events:none;background:#fff;border-radius:50%;opacity:.1;animation:twinkle 4s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.08;transform:scale(.8)}50%{opacity:.9;transform:scale(1.5)}}
 @media (prefers-reduced-motion:reduce){.star{animation:none;opacity:.4}}
-h1{font-size:22px;font-weight:300;letter-spacing:.3em;text-transform:uppercase;margin:0 0 48px}
+h1{font-size:clamp(24px,7vw,30px);white-space:nowrap;font-weight:300;letter-spacing:.25em;text-transform:uppercase;margin:0 0 48px}
 label{display:block;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:28px 0 8px}
 input[type=text],input[type=tel]{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font-size:18px;padding:8px 0;border-radius:0;outline:none}
 input:focus{border-color:var(--fg)}
@@ -25,7 +26,7 @@ input:focus{border-color:var(--fg)}
 button{width:100%;background:var(--fg);color:var(--bg);border:0;border-radius:8px;padding:16px;font-size:17px;cursor:pointer}
 button:disabled{opacity:.3;cursor:not-allowed}
 #msg{font-size:13px;color:var(--mute);margin-top:16px;min-height:18px}
-.spots{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-top:-32px;margin-bottom:8px}
+.tag{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);line-height:1.8;margin:-24px 0 8px}
 </style>
 </head>
 <body>
@@ -41,20 +42,20 @@ button:disabled{opacity:.3;cursor:not-allowed}
 
 <main>
 <h1>GoodNeighbor</h1>
-
-<div style="margin:0 0 8px">
-
-<div class="spots" style="margin:0 0 4px">Get your food delivered right to your dorm!</div>
-<div class="spots" style="margin:0">Limited beta · A 5C student project</div>
+<div class="tag">
+<div>Get your food delivered right to your dorm! </div>
+<div>Limited beta · A 5C student project</div>
 </div>
 
-<label for="num">Order Number</label>
+<label for="num">Numbers</label>
 <input id="num" type="text" inputmode="numeric" autocomplete="off">
 
 <label for="bld">Building name</label>
 <input id="bld" type="text" autocomplete="off">
+
 <label for="food">Food</label>
 <input id="food" type="text" autocomplete="off">
+
 <label>Drop-off</label>
 <label class="opt" style="margin:0;color:var(--fg);text-transform:none;letter-spacing:0;font-size:16px;cursor:pointer">
   <input type="radio" name="drop" checked> Leave in front of building
@@ -63,18 +64,20 @@ button:disabled{opacity:.3;cursor:not-allowed}
 
 <div class="price"><span>Total</span><span>$2.00</span></div>
 <div class="note">Paid through Venmo. If your request is not completed, you get a full refund.</div>
-  
+
 <button id="pay" disabled>Pay $2 with Venmo</button>
 <div id="msg"></div>
 </main>
 
 <script>
+// Put your Venmo username here (no @), e.g. "jane-doe"
 var VENMO_USER = "goodnghbr";
 var num = document.getElementById("num"), bld = document.getElementById("bld"), food = document.getElementById("food");
 var pay = document.getElementById("pay"), msg = document.getElementById("msg");
 function check(){ pay.disabled = !(num.value.trim() && bld.value.trim() && food.value.trim()); }
 num.addEventListener("input", check); bld.addEventListener("input", check); food.addEventListener("input", check);
 pay.addEventListener("click", function(){
+  if (!VENMO_USER) { msg.textContent = "Payment not connected yet."; return; }
   var note = "GoodNeighbor | numbers: " + num.value.trim() + " | building: " + bld.value.trim() + " | food: " + food.value.trim();
   window.location.href = "https://venmo.com/" + encodeURIComponent(VENMO_USER) + "?txn=pay&amount=2&note=" + encodeURIComponent(note);
 });
