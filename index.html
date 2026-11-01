@@ -48,7 +48,8 @@ button:disabled{opacity:.3;cursor:not-allowed}
 
 <label for="bld">Building name</label>
 <input id="bld" type="text" autocomplete="off">
-
+<label for="food">Food</label>
+<input id="food" type="text" autocomplete="off">
 <label>Drop-off</label>
 <label class="opt" style="margin:0;color:var(--fg);text-transform:none;letter-spacing:0;font-size:16px;cursor:pointer">
   <input type="radio" name="drop" checked> Leave in front of building
@@ -56,22 +57,21 @@ button:disabled{opacity:.3;cursor:not-allowed}
 <div class="opt off"><input type="radio" disabled> Leave at room door <small>Coming soon</small></div>
 
 <div class="price"><span>Total</span><span>$2.00</span></div>
-<div class="note">You are only charged when someone completes your request and sends a photo of where it was left.</div>
-
-<button id="pay" disabled> Pay</button>
+<div class="note">Paid through Venmo. If your request is not completed, you get a full refund.</div>
+  
+<button id="pay" disabled>Pay $2 with Venmo</button>
 <div id="msg"></div>
 </main>
 
 <script>
-// Replace with your Stripe Payment Link
-var PAYMENT_LINK = "";
-var num = document.getElementById("num"), bld = document.getElementById("bld");
+var VENMO_USER = "goodnghbr";
+var num = document.getElementById("num"), bld = document.getElementById("bld"), food = document.getElementById("food");
 var pay = document.getElementById("pay"), msg = document.getElementById("msg");
-function check(){ pay.disabled = !(num.value.trim() && bld.value.trim()); }
-num.addEventListener("input", check); bld.addEventListener("input", check);
+function check(){ pay.disabled = !(num.value.trim() && bld.value.trim() && food.value.trim()); }
+num.addEventListener("input", check); bld.addEventListener("input", check); food.addEventListener("input", check);
 pay.addEventListener("click", function(){
-  if (!PAYMENT_LINK) { msg.textContent = "Payment not connected yet."; return; }
-  window.location.href = PAYMENT_LINK;
+  var note = "GoodNeighbor | numbers: " + num.value.trim() + " | building: " + bld.value.trim() + " | food: " + food.value.trim();
+  window.location.href = "https://venmo.com/" + encodeURIComponent(VENMO_USER) + "?txn=pay&amount=2&note=" + encodeURIComponent(note);
 });
 (function(){
   var n=Math.round(innerWidth*innerHeight/9000);n=Math.max(30,Math.min(n,120));
