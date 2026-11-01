@@ -7,7 +7,8 @@
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark;--bg:#000;--fg:#fff;--mute:#777;--line:#333}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Helvetica,Arial,sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Helvetica,Arial,sans-serif;font-weight:300}
+input,button{font-family:inherit;font-weight:inherit}
 main{max-width:420px;margin:0 auto;padding:64px 24px}
 svg.plate{position:fixed;inset:0;margin:auto;width:min(100vw,900px);height:min(100vh,900px);z-index:0;pointer-events:none}main{position:relative;z-index:1}
 @media (max-width:600px){svg.plate g{display:none}}
@@ -18,15 +19,20 @@ h1{font-size:clamp(24px,7vw,30px);white-space:nowrap;font-weight:300;letter-spac
 label{display:block;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:28px 0 8px}
 input[type=text],input[type=tel]{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font-size:18px;padding:8px 0;border-radius:0;outline:none}
 input:focus{border-color:var(--fg)}
-.opt{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:300;color:var(--fg)}
+input[type=radio]{appearance:none;-webkit-appearance:none;width:14px;height:14px;border:1px solid #888;border-radius:50%;margin:0;flex:none;background:none}
+input[type=radio]:checked{background:#fff;border-color:#fff;box-shadow:inset 0 0 0 3px #000}
+input[type=radio]:disabled{opacity:.4}
 .opt.off{color:var(--mute)}
 .opt small{margin-left:auto;font-size:11px;letter-spacing:.15em;text-transform:uppercase}
-.price{display:flex;justify-content:space-between;margin-top:40px;font-size:18px}
+.price{display:flex;justify-content:space-between;align-items:baseline;margin-top:40px;font-size:12px;letter-spacing:.15em;text-transform:uppercase}
+.price span:last-child{font-size:20px;letter-spacing:.05em}
 .note{font-size:12px;color:var(--mute);margin:8px 0 24px;line-height:1.5}
-button{width:100%;background:var(--fg);color:var(--bg);border:0;border-radius:8px;padding:16px;font-size:17px;cursor:pointer}
+button{width:100%;background:var(--fg);color:var(--bg);border:0;border-radius:8px;padding:16px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
 button:disabled{opacity:.3;cursor:not-allowed}
 #msg{font-size:13px;color:var(--mute);margin-top:16px;min-height:18px}
-.tag{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);line-height:1.8;margin:-24px 0 8px}
+.tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);line-height:1.7;margin:-24px 0 8px}
+.tagline{font-size:clamp(9px,2.8vw,12px);font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--fg);line-height:1.6;margin-bottom:8px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -43,7 +49,7 @@ button:disabled{opacity:.3;cursor:not-allowed}
 <main>
 <h1>GoodNeighbor</h1>
 <div class="tag">
-<div>Get your food delivered right to your dorm! </div>
+<div class="tagline">Get food delivered right to your dorm</div>
 <div>Limited beta · A 5C student project</div>
 </div>
 
@@ -57,7 +63,7 @@ button:disabled{opacity:.3;cursor:not-allowed}
 <input id="food" type="text" autocomplete="off">
 
 <label>Drop-off</label>
-<label class="opt" style="margin:0;color:var(--fg);text-transform:none;letter-spacing:0;font-size:16px;cursor:pointer">
+<label class="opt" style="margin:0;cursor:pointer">
   <input type="radio" name="drop" checked> Leave in front of building
 </label>
 <div class="opt off"><input type="radio" disabled> Leave at room door <small>Coming soon</small></div>
