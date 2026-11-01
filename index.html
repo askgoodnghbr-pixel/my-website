@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GoodNeighbor</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark;--bg:#000;--fg:#fff;--mute:#777;--line:#333}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Helvetica,Arial,sans-serif}
+main{max-width:420px;margin:0 auto;padding:64px 24px}
+svg.plate{position:fixed;inset:0;margin:auto;width:min(100vw,900px);height:min(100vh,900px);z-index:0;pointer-events:none}main{position:relative;z-index:1}
+.star{position:fixed;z-index:0;pointer-events:none;background:#fff;border-radius:50%;opacity:.1;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.08;transform:scale(.8)}50%{opacity:.9;transform:scale(1.5)}}
+@media (prefers-reduced-motion:reduce){.star{animation:none;opacity:.4}}
+h1{font-size:22px;font-weight:300;letter-spacing:.3em;text-transform:uppercase;margin:0 0 48px}
+label{display:block;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:28px 0 8px}
+input[type=text],input[type=tel]{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font-size:18px;padding:8px 0;border-radius:0;outline:none}
+input:focus{border-color:var(--fg)}
+.opt{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+.opt.off{color:var(--mute)}
+.opt small{margin-left:auto;font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+.price{display:flex;justify-content:space-between;margin-top:40px;font-size:18px}
+.note{font-size:12px;color:var(--mute);margin:8px 0 24px;line-height:1.5}
+button{width:100%;background:var(--fg);color:var(--bg);border:0;border-radius:8px;padding:16px;font-size:17px;cursor:pointer}
+button:disabled{opacity:.3;cursor:not-allowed}
+#msg{font-size:13px;color:var(--mute);margin-top:16px;min-height:18px}
+.spots{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin-top:-32px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<svg class="plate" viewBox="0 0 400 400" fill="none" stroke="#fff" stroke-linecap="round" aria-hidden="true">
+<circle cx="200" cy="200" r="150" stroke-opacity=".16" stroke-width=".8"/>
+<circle cx="200" cy="200" r="112" stroke-opacity=".09" stroke-width=".6"/>
+<g stroke-opacity=".28" stroke-width=".8">
+<path d="M20 110V150M28 110V150M36 110V150M20 150Q28 168 36 150M28 162V290"/>
+<ellipse cx="372" cy="130" rx="11" ry="18"/>
+<path d="M372 148V290"/>
+</g>
+</svg>
+
+<main>
+<h1>GoodNeighbor</h1>
+<div class="spots">Limited beta · A 5C student project</div>
+
+<label for="num">Numbers</label>
+<input id="num" type="text" inputmode="numeric" autocomplete="off">
+
+<label for="bld">Building name</label>
+<input id="bld" type="text" autocomplete="off">
+
+<label>Drop-off</label>
+<label class="opt" style="margin:0;color:var(--fg);text-transform:none;letter-spacing:0;font-size:16px;cursor:pointer">
+  <input type="radio" name="drop" checked> Leave in front of building
+</label>
+<div class="opt off"><input type="radio" disabled> Leave at room door <small>Coming soon</small></div>
+
+<div class="price"><span>Total</span><span>$2.00</span></div>
+<div class="note">You are only charged when someone completes your request and sends a photo of where it was left.</div>
+
+<button id="pay" disabled> Pay</button>
+<div id="msg"></div>
+</main>
+
+<script>
+// Replace with your Stripe Payment Link
+var PAYMENT_LINK = "";
+var num = document.getElementById("num"), bld = document.getElementById("bld");
+var pay = document.getElementById("pay"), msg = document.getElementById("msg");
+function check(){ pay.disabled = !(num.value.trim() && bld.value.trim()); }
+num.addEventListener("input", check); bld.addEventListener("input", check);
+pay.addEventListener("click", function(){
+  if (!PAYMENT_LINK) { msg.textContent = "Payment not connected yet."; return; }
+  window.location.href = PAYMENT_LINK;
+});
+(function(){
+  var n=Math.round(innerWidth*innerHeight/9000);n=Math.max(30,Math.min(n,120));
+  for(var i=0;i<n;i++){var s=document.createElement('div'),z=Math.random()<.8?1:2;
+    s.className='star';s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
+    s.style.width=s.style.height=z+'px';
+    s.style.animationDuration=(2.5+Math.random()*4)+'s';s.style.animationDelay=(-Math.random()*6)+'s';
+    document.body.appendChild(s);}
+})();
+</script>
+</body>
+</html>
