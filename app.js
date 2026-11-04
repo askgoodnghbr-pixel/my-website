@@ -5,7 +5,7 @@ var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzPotfV1MW80vl1X3Wd
 var CONTACT_EMAIL = "askgoodnghbr@gmail.com"; // e.g. "you@mymail.pomona.edu"
 
 // ---- PAYMENT SETTINGS (fill these in) ----
-var VENMO_USER = "goodnghbr";      // Venmo username, no @
+var VENMO_USER = "";      // Venmo username, no @
 var PAYPAL_USER = "";              // PayPal.me name, e.g. "janedoe"
 var ZELLE_ID = "";                 // email or phone number registered with Zelle
 var PRICE = 2;
