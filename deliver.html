@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deliver | GoodNeighbor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">&larr; Back</a>
+  <h1><a href="index.html">GoodNeighbor</a></h1>
+  <div class="tagline">Get food delivered right to your dorm</div>
+  <div class="tag">Coming soon · A 5C student project</div>
+
+  <div class="lede">Deliver food. Earn money.<br>Flexible, around your class schedule. Express interest below.</div>
+
+  <form id="interest" data-role="deliverer">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required autocomplete="name">
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required autocomplete="email">
+
+    <label for="college">College</label>
+    <select id="college" name="college" required>
+      <option value="">Select</option>
+      <option>Pomona</option>
+      <option>Claremont McKenna</option>
+      <option>Scripps</option>
+      <option>Pitzer</option>
+      <option>Harvey Mudd</option>
+    </select>
+
+    <label for="avail">When are you usually free?</label>
+    <textarea id="avail" name="availability" placeholder="e.g. weeknights after 6, weekend afternoons"></textarea>
+
+    <button class="btn solid" type="submit">Express interest</button>
+    <div id="msg" role="status"></div>
+  </form>
+
+  <div class="footer">A 5C student project</div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

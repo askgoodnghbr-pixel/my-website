@@ -1,0 +1,45 @@
+:root{--bg:#000;--fg:#fff;--mute:#777;--line:#333;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Helvetica,Arial,sans-serif;font-weight:300}
+input,select,button,textarea{font-family:inherit;font-weight:inherit}
+main{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:64px 24px 80px}
+svg.plate{position:fixed;inset:0;margin:auto;width:min(100vw,900px);height:min(100vh,900px);z-index:0;pointer-events:none}
+@media (max-width:600px){svg.plate g{display:none}}
+.star{position:fixed;z-index:0;pointer-events:none;background:#fff;border-radius:50%;opacity:.1;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.08;transform:scale(.8)}50%{opacity:.9;transform:scale(1.5)}}
+@media (prefers-reduced-motion:reduce){.star{animation:none;opacity:.4}}
+
+h1{font-size:clamp(24px,7vw,30px);white-space:nowrap;font-weight:300;letter-spacing:.25em;text-transform:uppercase;margin:0 0 12px;text-align:center}
+h1 a{color:inherit;text-decoration:none}
+.tagline{font-size:clamp(9px,2.8vw,12px);letter-spacing:.18em;text-transform:uppercase;line-height:1.6;margin-bottom:8px;white-space:nowrap;text-align:center}
+.tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);line-height:1.7;text-align:center}
+.soon{margin:56px 0 8px;text-align:center;font-size:22px;letter-spacing:.3em;text-transform:uppercase}
+.soon-sub{text-align:center;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);line-height:1.9;margin-bottom:40px}
+
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:1px solid #fff;border-radius:8px;padding:18px 16px;margin:14px 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);background:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:#fff;color:#000}
+.btn.solid{background:#fff;color:#000}
+.btn.solid:hover{background:#ddd}
+button.btn:disabled{opacity:.3;cursor:not-allowed}
+
+.about{margin-top:72px;border-top:1px solid var(--line);padding-top:40px}
+.section-title{font-size:16px;letter-spacing:.22em;text-transform:uppercase;margin:0 0 22px;text-align:center}
+.about p{font-size:14px;letter-spacing:.06em;line-height:1.95;color:#bbb;margin:0 0 20px}
+.about ul{list-style:none;padding:0;margin:0 0 22px}
+.about li{font-size:13px;letter-spacing:.08em;line-height:1.7;color:#bbb;padding:12px 0;border-bottom:1px solid var(--line)}
+.about p.strong{color:var(--fg)}
+
+.back{display:inline-block;margin-bottom:36px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.back:hover{color:#fff}
+.lede{font-size:13px;letter-spacing:.06em;line-height:1.9;color:#aaa;text-align:center;margin:36px 0 8px}
+form{margin-top:8px}
+label{display:block;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--mute);margin:28px 0 8px}
+input[type=text],input[type=email],select,textarea{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--fg);font-size:18px;padding:8px 0;border-radius:0;outline:none}
+select option{background:#000;color:#fff}
+textarea{resize:vertical;min-height:70px}
+input:focus,select:focus,textarea:focus{border-color:var(--fg)}
+form .btn{margin-top:40px}
+#msg{font-size:13px;color:var(--mute);margin-top:16px;min-height:18px;text-align:center;line-height:1.6}
+.pay{margin-top:64px;border-top:1px solid var(--line);padding-top:40px}
+.zelle-note{font-size:12px;color:var(--mute);line-height:1.6;text-align:center;min-height:18px;word-break:break-all}
+.footer{margin-top:64px;text-align:center;font-size:10px;letter-spacing:.25em;color:var(--mute);text-transform:uppercase}

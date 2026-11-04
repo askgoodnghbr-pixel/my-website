@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order | GoodNeighbor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">&larr; Back</a>
+  <h1><a href="index.html">GoodNeighbor</a></h1>
+  <div class="tagline">Get food delivered right to your dorm</div>
+  <div class="tag">Coming soon · A 5C student project</div>
+
+  <div class="lede">Want food brought to your dorm?<br>Express interest and we'll let you know when we launch.</div>
+
+  <form id="interest" data-role="customer">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required autocomplete="name">
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required autocomplete="email">
+
+    <label for="college">College</label>
+    <select id="college" name="college" required>
+      <option value="">Select</option>
+      <option>Pomona</option>
+      <option>Claremont McKenna</option>
+      <option>Scripps</option>
+      <option>Pitzer</option>
+      <option>Harvey Mudd</option>
+    </select>
+
+    <label for="building">Building / dorm</label>
+    <input id="building" name="building" type="text" autocomplete="off">
+
+    <button class="btn solid" type="submit">Express interest</button>
+    <div id="msg" role="status"></div>
+  </form>
+
+  <section class="pay" id="pay">
+    <div class="section-title">Pay $2</div>
+    <div class="lede" style="margin-top:0">Flat $2 delivery fee. Full refund if your request isn't completed.</div>
+    <a class="btn solid" id="pay-venmo" href="#" target="_blank" rel="noopener">Pay with Venmo</a>
+    <a class="btn" id="pay-paypal" href="#" target="_blank" rel="noopener">Pay with PayPal</a>
+    <button class="btn" id="pay-zelle" type="button">Pay with Zelle</button>
+    <div class="zelle-note" id="zelle-note"></div>
+    <button class="btn" type="button" disabled>Apple Pay &middot; Coming soon</button>
+  </section>
+
+  <div class="footer">A 5C student project</div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
