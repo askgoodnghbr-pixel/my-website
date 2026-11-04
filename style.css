@@ -43,3 +43,58 @@ form .btn{margin-top:40px}
 .pay{margin-top:64px;border-top:1px solid var(--line);padding-top:40px}
 .zelle-note{font-size:12px;color:var(--mute);line-height:1.6;text-align:center;min-height:18px;word-break:break-all}
 .footer{margin-top:64px;text-align:center;font-size:10px;letter-spacing:.25em;color:var(--mute);text-transform:uppercase}
+
+/* beta pill */
+.beta{display:table;margin:12px auto 0;border:1px solid #555;border-radius:20px;padding:5px 14px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#bbb}
+
+/* demo section */
+.demo{margin-top:64px;border-top:1px solid var(--line);padding-top:40px}
+.demo-note{text-align:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.demo-note a{color:#fff}
+
+/* phone */
+.phone{width:290px;margin:26px auto 0;padding:9px;border:2px solid #777;border-radius:34px;background:#080808;box-shadow:0 0 0 1px #222}
+.phone-notch{width:75px;height:13px;border-radius:0 0 10px 10px;background:#222;margin:0 auto 12px}
+.phone-screen{border-radius:23px;background:#000;padding:20px 19px 22px;text-align:left;min-height:470px;border:1px solid #222}
+.phone-brand{font-size:17px;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;margin-bottom:7px}
+.phone-tagline{font-size:8px;letter-spacing:.12em;text-transform:uppercase;line-height:1.6;margin-bottom:5px}
+.phone-project{color:#777;font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.phone-label{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#777;margin:15px 0 7px}
+.phone-value{font-size:13px;padding:0 0 8px;border-bottom:1px solid #333;min-height:25px}
+.caret{animation:blink 1s steps(1) infinite;color:#777}
+@keyframes blink{50%{opacity:0}}
+.phone-option{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid #333;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.phone-radio{width:11px;height:11px;border:1px solid #888;border-radius:50%;flex:none}
+.phone-radio.selected{background:#fff;box-shadow:inset 0 0 0 2px #000}
+.phone-check{width:12px;height:12px;border:1px solid #888;border-radius:3px;flex:none;transition:background .2s}
+.toggle{cursor:pointer}
+.toggle.on .phone-check{background:#fff;box-shadow:inset 0 0 0 2px #000}
+.phone-help{font-size:9px;color:#777;letter-spacing:.06em;line-height:1.6;margin-top:6px}
+.phone-price{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.phone-price strong{font-size:18px;font-weight:300}
+.phone-pay{margin-top:14px;background:#fff;color:#000;border-radius:6px;text-align:center;padding:12px 5px;font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+
+/* deliverer demo */
+.dstate{display:none}
+.dstate.on{display:block;animation:fadein .4s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.online{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-top:30px}
+.pulse{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+.notif{border:1px solid #555;border-radius:14px;padding:14px;background:#0c0c0c;margin-top:12px;animation:slidein .5s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes slidein{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
+.notif-top{display:flex;justify-content:space-between;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:#777;margin-bottom:10px}
+.notif-main{font-size:13px;letter-spacing:.04em;line-height:1.5}
+.notif-route{font-size:11px;color:#aaa;margin-top:4px;letter-spacing:.06em}
+.notif-pay{font-size:10px;color:#777;margin-top:10px;letter-spacing:.1em;text-transform:uppercase}
+.notif-btns{display:flex;gap:8px;margin-top:14px}
+.nb{flex:1;border:1px solid #666;background:none;color:#fff;border-radius:6px;padding:10px 4px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.nb.go{background:#fff;color:#000;border-color:#fff}
+.dstep{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #333;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#777;transition:color .3s}
+.dstep .dot{width:11px;height:11px;border:1px solid #888;border-radius:50%;flex:none;transition:background .3s}
+.dstep.now{color:#fff}
+.dstep.now .dot{animation:pulse 1.2s ease-in-out infinite;background:#fff}
+.dstep.done{color:#aaa}
+.dstep.done .dot{background:#fff;box-shadow:inset 0 0 0 2px #000;animation:none}
+.done-check{width:46px;height:46px;border:1px solid #fff;border-radius:50%;margin:40px auto 16px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.earned{text-align:center;font-size:20px;margin-top:10px;letter-spacing:.05em}
