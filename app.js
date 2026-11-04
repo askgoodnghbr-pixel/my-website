@@ -1,8 +1,8 @@
 // ---- SETTINGS ----
 // Paste your Google Apps Script web app URL here (see google-sheet-script.gs). Every submission becomes a row in your Google Sheet.
 // Leave it empty and the form will open an email to CONTACT_EMAIL instead.
-var FORM_ENDPOINT = "";
-var CONTACT_EMAIL = ""; // e.g. "you@mymail.pomona.edu"
+var FORM_ENDPOINT = "https://docs.google.com/spreadsheets/d/17rEJbzg7dRD8lFtFlGA7BtCV66831gve2t2HXcj-NVQ/edit?pli=1&gid=0#gid=0";
+var CONTACT_EMAIL = "askgoodnghbr@gmail.com"; // e.g. "you@mymail.pomona.edu"
 
 // ---- PAYMENT SETTINGS (fill these in) ----
 var VENMO_USER = "goodnghbr";      // Venmo username, no @
