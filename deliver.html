@@ -11,7 +11,8 @@
   <a class="back" href="index.html">&larr; Back</a>
   <h1><a href="index.html">GoodNeighbor</a></h1>
   <div class="tagline">Get food delivered right to your dorm</div>
-  <div class="tag">Coming soon · A 5C student project</div>
+  <div class="tag">A 5C student project</div>
+  <div class="beta">Limited beta</div>
 
   <div class="lede">Deliver food. Earn money.<br>Flexible, around your class schedule. Express interest below.</div>
 
@@ -38,6 +39,52 @@
     <button class="btn solid" type="submit">Express interest</button>
     <div id="msg" role="status"></div>
   </form>
+
+  <section class="demo">
+    <div class="section-title">Here's how it'll work</div>
+    <div class="lede" style="margin-top:0">A quick demo of the deliverer app. Tap Accept to try it.</div>
+
+    <div class="phone" id="deliver-demo">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-brand">GoodNeighbor</div>
+        <div class="phone-project">Deliverer &middot; Limited beta</div>
+
+        <div class="dstate on" id="d-idle">
+          <div class="online"><span class="pulse"></span>Online</div>
+          <div class="phone-help" style="margin-top:14px">Waiting for orders near you...</div>
+        </div>
+
+        <div class="dstate" id="d-offer">
+          <div class="notif">
+            <div class="notif-top"><span>New order</span><span>now</span></div>
+            <div class="notif-main">Deliver hamburger</div>
+            <div class="notif-route">Malott &rarr; West Dorm</div>
+            <div class="notif-pay">You earn $2.00</div>
+            <div class="notif-btns">
+              <button type="button" class="nb" id="d-decline">Decline</button>
+              <button type="button" class="nb go" id="d-accept">Accept</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dstate" id="d-active">
+          <div class="phone-label" style="margin-top:6px">Current delivery</div>
+          <div class="notif-main" style="margin-bottom:12px">Hamburger &middot; Malott &rarr; West Dorm</div>
+          <div class="dstep" id="s1"><span class="dot"></span>Head to Malott</div>
+          <div class="dstep" id="s2"><span class="dot"></span>Pick up the hamburger</div>
+          <div class="dstep" id="s3"><span class="dot"></span>Drop off at West Dorm</div>
+        </div>
+
+        <div class="dstate" id="d-done">
+          <div class="done-check">&#10003;</div>
+          <div class="notif-main" style="text-align:center">Delivered</div>
+          <div class="earned">+ $2.00 earned</div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-note">Demo only. <a href="#" id="replay">Replay</a></div>
+  </section>
 
   <div class="footer">A 5C student project</div>
 </main>
