@@ -1,5 +1,5 @@
 // ---- SETTINGS ----
-// Easiest: make a free form at formspree.io and paste its URL here (e.g. "https://formspree.io/f/xxxxxxx").
+// Paste your Google Apps Script web app URL here (see google-sheet-script.gs). Every submission becomes a row in your Google Sheet.
 // Leave it empty and the form will open an email to CONTACT_EMAIL instead.
 var FORM_ENDPOINT = "";
 var CONTACT_EMAIL = ""; // e.g. "you@mymail.pomona.edu"
@@ -73,9 +73,10 @@ if (form) {
 
     if (FORM_ENDPOINT) {
       data.append("role", role);
-      fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
-        .then(function (r) {
-          if (!r.ok) throw new Error();
+      // Google Apps Script doesn't send CORS headers, so use no-cors (the row still gets saved).
+      var params = new URLSearchParams(data);
+      fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: params })
+        .then(function () {
           form.reset();
           msg.textContent = "Thanks! You're on the list. We'll reach out when GoodNeighbor launches.";
         })
@@ -90,3 +91,65 @@ if (form) {
     }
   });
 }
+
+// ---- order demo (typing + keycard toggle) ----
+(function () {
+  var typed = document.getElementById("typed");
+  if (!typed) return;
+  var foods = ["Hamburger from Malott", "Chicken tenders from Collins", "Pad thai from Frary"];
+  var fi = 0, ci = 0, del = false;
+  function tick() {
+    var word = foods[fi];
+    if (!del) {
+      ci++;
+      typed.textContent = word.slice(0, ci);
+      if (ci === word.length) { del = true; return setTimeout(tick, 1600); }
+      return setTimeout(tick, 70);
+    }
+    ci--;
+    typed.textContent = word.slice(0, ci);
+    if (ci === 0) { del = false; fi = (fi + 1) % foods.length; return setTimeout(tick, 400); }
+    setTimeout(tick, 30);
+  }
+  tick();
+
+  var kc = document.getElementById("keycard"), help = document.getElementById("keycard-help");
+  kc.addEventListener("click", function () {
+    var on = kc.classList.toggle("on");
+    help.textContent = on
+      ? "On. A deliverer grabs your keycard, uses it, and brings it back."
+      : "Off. You'll swipe in yourself.";
+  });
+})();
+
+// ---- deliverer demo (notification -> accept -> delivery -> done) ----
+(function () {
+  var idle = document.getElementById("d-idle");
+  if (!idle) return;
+  var states = ["d-idle", "d-offer", "d-active", "d-done"].map(function (id) { return document.getElementById(id); });
+  var steps = ["s1", "s2", "s3"].map(function (id) { return document.getElementById(id); });
+  var timers = [];
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function show(i) { states.forEach(function (s, j) { s.classList.toggle("on", i === j); }); }
+  function clear() { timers.forEach(clearTimeout); timers = []; }
+
+  function start() {
+    clear();
+    steps.forEach(function (s) { s.className = "dstep"; });
+    show(0);
+    later(function () { show(1); }, 2200);
+  }
+  function accept() {
+    clear();
+    show(2);
+    steps[0].classList.add("now");
+    later(function () { steps[0].className = "dstep done"; steps[1].classList.add("now"); }, 1800);
+    later(function () { steps[1].className = "dstep done"; steps[2].classList.add("now"); }, 3600);
+    later(function () { steps[2].className = "dstep done"; show(3); }, 5400);
+    later(start, 9000);
+  }
+  document.getElementById("d-accept").addEventListener("click", accept);
+  document.getElementById("d-decline").addEventListener("click", start);
+  document.getElementById("replay").addEventListener("click", function (e) { e.preventDefault(); start(); });
+  start();
+})();
