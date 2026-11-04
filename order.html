@@ -11,7 +11,8 @@
   <a class="back" href="index.html">&larr; Back</a>
   <h1><a href="index.html">GoodNeighbor</a></h1>
   <div class="tagline">Get food delivered right to your dorm</div>
-  <div class="tag">Coming soon · A 5C student project</div>
+  <div class="tag">A 5C student project</div>
+  <div class="beta">Limited beta</div>
 
   <div class="lede">Want food brought to your dorm?<br>Express interest and we'll let you know when we launch.</div>
 
@@ -32,12 +33,49 @@
       <option>Harvey Mudd</option>
     </select>
 
-    <label for="building">Building / dorm</label>
-    <input id="building" name="building" type="text" autocomplete="off">
-
     <button class="btn solid" type="submit">Express interest</button>
     <div id="msg" role="status"></div>
   </form>
+
+  <section class="demo">
+    <div class="section-title">Here's how it'll work</div>
+    <div class="lede" style="margin-top:0">A quick demo of the app. Tap around, it's just for show.</div>
+
+    <div class="phone" id="order-demo">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-brand">GoodNeighbor</div>
+        <div class="phone-tagline">Get food delivered right to your dorm</div>
+        <div class="phone-project">Limited beta &middot; A 5C student project</div>
+
+        <span class="phone-label">Building</span>
+        <div class="phone-value">West Dorm</div>
+
+        <span class="phone-label">Food</span>
+        <div class="phone-value"><span id="typed"></span><span class="caret">|</span></div>
+
+        <span class="phone-label">Drop-off</span>
+        <div class="phone-option sel" data-group="drop">
+          <span class="phone-radio selected"></span>Leave in front of building
+        </div>
+        <div class="phone-option" style="color:#777">
+          <span class="phone-radio"></span>Leave at room door
+          <span style="margin-left:auto;font-size:8px">Soon</span>
+        </div>
+
+        <span class="phone-label">Keycard</span>
+        <div class="phone-option toggle" id="keycard">
+          <span class="phone-check"></span>
+          <span>Pick up &amp; drop off my keycard</span>
+        </div>
+        <div class="phone-help" id="keycard-help">Off. You'll swipe in yourself.</div>
+
+        <div class="phone-price"><span>Total</span><strong>$2.00</strong></div>
+        <div class="phone-pay">Pay $2</div>
+      </div>
+    </div>
+    <div class="demo-note">Demo only. Not the real app yet.</div>
+  </section>
 
   <section class="pay" id="pay">
     <div class="section-title">Pay $2</div>
