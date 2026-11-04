@@ -1,7 +1,7 @@
 // ---- SETTINGS ----
 // Paste your Google Apps Script web app URL here (see google-sheet-script.gs). Every submission becomes a row in your Google Sheet.
 // Leave it empty and the form will open an email to CONTACT_EMAIL instead.
-var FORM_ENDPOINT = "https://docs.google.com/spreadsheets/d/17rEJbzg7dRD8lFtFlGA7BtCV66831gve2t2HXcj-NVQ/edit?pli=1&gid=0#gid=0";
+var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzPotfV1MW80vl1X3WdE-1bo2V5901h_YbVvdvnuDzn8HBg2FJ-zdVXKgbgzFiqCCrfrA/exec";
 var CONTACT_EMAIL = "askgoodnghbr@gmail.com"; // e.g. "you@mymail.pomona.edu"
 
 // ---- PAYMENT SETTINGS (fill these in) ----
